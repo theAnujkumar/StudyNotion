@@ -18,7 +18,7 @@ const CourseDetails = () => {
   const {user} = useSelector((state) => state.profile);
   const {token} = useSelector((state) => state.auth);
   const { loading } = useSelector((state) => state.profile)
-  const { paymentLoading } = useSelector((state) => state.course)
+  //const { paymentLoading } = useSelector((state) => state.course)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const {courseId} = useParams()
@@ -72,7 +72,7 @@ const CourseDetails = () => {
     setIsActive(
       !isActive.includes(id)
       ? isActive.concat([id])
-      : isActive.filter((e) => e != id)
+      : isActive.filter((e) => e !== id)
     )
     handleActive()
   }
@@ -273,33 +273,33 @@ export default CourseDetails;
 
 // currency , undefined null , object id
 
-{/* <div className="relative">
-        <p>{courseName}</p>
-        <p>{courseDescription}</p>
-        <div>
-          <span>{avgReviewCount}</span>
-          <RatingStars Review_Count={avgReviewCount} Star_Size={24} />
-          <span>{`(${ratingAndReviews.length} reviews)`}</span>
-          <span>{`(${studentsEnrolled.length} students enrolled)`}</span>
-        </div>
+// {/* <div className="relative">
+//         <p>{courseName}</p>
+//         <p>{courseDescription}</p>
+//         <div>
+//           <span>{avgReviewCount}</span>
+//           <RatingStars Review_Count={avgReviewCount} Star_Size={24} />
+//           <span>{`(${ratingAndReviews.length} reviews)`}</span>
+//           <span>{`(${studentsEnrolled.length} students enrolled)`}</span>
+//         </div>
 
-        <div>
-          <p>
-            Created By {`${instructor.firstName} ${instructor.lastName}`}
-          </p>
-        </div>
+//         <div>
+//           <p>
+//             Created By {`${instructor.firstName} ${instructor.lastName}`}
+//           </p>
+//         </div>
 
-        <div className="flex flex-wrap gap-5 text-lg">
-          <p>
-            {""}
-            Created at {formatDate(createdAt)}
-          </p>
-        </div>
+//         <div className="flex flex-wrap gap-5 text-lg">
+//           <p>
+//             {""}
+//             Created at {formatDate(createdAt)}
+//           </p>
+//         </div>
 
-        <div className="flex flex-wrap gap-5 text-lg">
-          <p>
-            {""}
-            English
-          </p>
-        </div>
-      </div> */}
+//         <div className="flex flex-wrap gap-5 text-lg">
+//           <p>
+//             {""}
+//             English
+//           </p>
+//         </div>
+//       </div> */}

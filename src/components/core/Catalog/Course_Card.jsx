@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import GetAvgRating from "../../../utils/avgRating"
 import RatingStars from "../../common/RatingStars"
 import { Link } from "react-router-dom";
-import { FaRegStar, FaStar } from "react-icons/fa"
+//import { FaRegStar, FaStar } from "react-icons/fa"
 
 const Course_Card = ({course,Height}) => {
 
