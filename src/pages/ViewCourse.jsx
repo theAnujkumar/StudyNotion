@@ -42,18 +42,16 @@ const ViewCourse = () => {
     })()
   },[])
   return(
-    <div>
-      <div>
+    <div className="min-h-[calc(100vh-3.5rem)] bg-richblack-900 text-richblack-5">
+      <div className="flex min-h-[calc(100vh-3.5rem)] flex-col lg:flex-row">
         <VideoDetailsSidebar setReviewModal={setReviewModal} />
-        <div>
-          <div>
-            <Outlet/>
+        <div className="flex-1 overflow-hidden bg-richblack-900">
+          <div className="h-full w-full overflow-y-auto p-4 sm:p-6 lg:p-8">
+            <Outlet />
           </div>
         </div>
       </div>
-      {/* review slider part */}
-      {/* reviewModal &&  */}
-      { reviewModal && <CourseReviewModal setReviewModal={setReviewModal}/>  }
+      {reviewModal && <CourseReviewModal setReviewModal={setReviewModal} />}
     </div>
   )
 }

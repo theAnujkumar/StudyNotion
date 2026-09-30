@@ -18,7 +18,7 @@ const MyProfile = () => {
       </h1>
 
       {/* section 1 */}
-      <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+      <div className="flex flex-col gap-4 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-8 sm:px-12">
         <div className="flex items-center gap-x-4">
           <img
             src={user?.image}
@@ -29,23 +29,10 @@ const MyProfile = () => {
             <p className="text-lg font-semibold text-richblack-5">
               {user?.firstName + " " + user?.lastName}
             </p>
-            <p className="text-sm text-richblack-300">{user?.email}</p>
+            <p className="break-all text-sm text-richblack-300">{user?.email}</p>
           </div>
         </div>
-        <IconBtn
-          text="Edit"
-          onclick={() => {
-            navigate("/dashboard/settings")
-          }}
-        >
-          <RiEditBoxLine />
-        </IconBtn>
-      </div>
-      
-      {/* section 2 */}
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
-        <div className="flex w-full items-center justify-between">
-          <p className="text-lg font-semibold text-richblack-5">About</p>
+        <div className="self-start sm:self-auto">
           <IconBtn
             text="Edit"
             onclick={() => {
@@ -54,6 +41,23 @@ const MyProfile = () => {
           >
             <RiEditBoxLine />
           </IconBtn>
+        </div>
+      </div>
+      
+      {/* section 2 */}
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-4 sm:p-8 sm:px-12">
+        <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-lg font-semibold text-richblack-5">About</p>
+          <div className="self-start sm:self-auto">
+            <IconBtn
+              text="Edit"
+              onclick={() => {
+                navigate("/dashboard/settings")
+              }}
+            >
+              <RiEditBoxLine />
+            </IconBtn>
+          </div>
         </div>
         <p
           className={`${
@@ -67,22 +71,24 @@ const MyProfile = () => {
       </div>
 
         {/* section 3 */}
-      <div className="my-5 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
-        <div className="flex w-full items-center justify-between">
+      <div className="my-5 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-4 sm:p-8 sm:px-12">
+        <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-lg font-semibold text-richblack-5">
             Personal Details
           </p>
-          <IconBtn
-            text="Edit"
-            onclick={() => {
-              navigate("/dashboard/settings")
-            }}
-          >
-            <RiEditBoxLine />
-          </IconBtn>
+          <div className="self-start sm:self-auto">
+            <IconBtn
+              text="Edit"
+              onclick={() => {
+                navigate("/dashboard/settings")
+              }}
+            >
+              <RiEditBoxLine />
+            </IconBtn>
+          </div>
         </div>
 
-        <div className="flex max-w-[500px] justify-between scroll-smooth max-h-full">
+        <div className="grid max-w-[700px] gap-x-8 gap-y-5 sm:grid-cols-2">
           <div className="flex flex-col gap-y-5">
             <div>
               <p className="mb-2 text-sm text-richblack-600">First Name</p>
@@ -92,7 +98,7 @@ const MyProfile = () => {
             </div>
             <div>
               <p className="mb-2 text-sm text-richblack-600">Email</p>
-              <p className="text-sm font-medium text-richblack-5">
+              <p className="break-all text-sm font-medium text-richblack-5">
                 {user?.email}
               </p>
             </div>

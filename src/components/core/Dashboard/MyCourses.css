@@ -1,0 +1,18 @@
+.my-courses-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .my-courses-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .my-courses-title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}

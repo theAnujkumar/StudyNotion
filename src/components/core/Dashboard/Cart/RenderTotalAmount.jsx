@@ -20,14 +20,16 @@ export default function RenderTotalAmount() {
     }
 
     return(
-        <div>
-            <p>Total:</p>
-            <p>Rs {total}</p>
+        <div className="rounded-xl border border-richblack-700 bg-richblack-800 p-5 text-richblack-5">
+            <p className="text-lg font-semibold">Total</p>
+            <p className="mt-3 text-3xl font-bold text-yellow-25">Rs {total}</p>
 
             <IconBtn
                 text="Buy Now"
-                onClick={handleBuyCourse}
-                customClasses={"w-full justify-center"}/>
+                onclick={handleBuyCourse}
+                customClasses={"mt-5 w-full justify-center"}
+                type="button"
+            />
         </div>
     )
 

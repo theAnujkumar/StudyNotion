@@ -56,7 +56,7 @@ export default function Instructor()
         ) : courses.length > 0 ? (
           <div>
             {/* pie chart and statics data */}
-            <div className="flex h-[450px] my-4 space-x-4">
+            <div className="my-4 flex flex-col gap-4 lg:h-[450px] lg:flex-row lg:space-x-4">
               {
                 totalStudents > 0 || totalAmount > 0 ? (
                   <InstructorChart courses={instructorData} />
@@ -70,7 +70,7 @@ export default function Instructor()
                 )
               }
               {/* Total Statistics */}
-              <div className="flex min-w-[250px] flex-col rounded-md bg-richblack-800 p-6">
+              <div className="flex min-w-0 flex-col rounded-md bg-richblack-800 p-6 lg:min-w-[250px] lg:flex-none">
                 <p className="text-lg font-bold text-richblack-5">Statistics</p>
                 <div className="mt-4 space-y-4">
                   <div>
@@ -103,9 +103,9 @@ export default function Instructor()
                 </Link>
               </div>
 
-              <div className="flex my-4 space-x-4 items-center">
+              <div className="my-4 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
                 {courses.slice(0,3).map((course) => (
-                  <div key={course._id} className="w-1/3">
+                  <div key={course._id} className="w-full">
                     <img
                       src={course.thumbnail}
                       alt={course.courseName}
@@ -115,13 +115,11 @@ export default function Instructor()
                       <p className="text-sm font-medium text-richblack-50">
                         {course.courseName}
                       </p>
-                      <div className="mt-1 flex items-center space-x-2">
+                      <div className="mt-1 flex flex-wrap items-center gap-2">
                         <p className="text-xs font-medium text-richblack-300">
                           {course.studentsEnrolled.length} students
                         </p>
-                        <p className="text-xs font-medium text-richblack-300">
-                          |
-                        </p>
+                        <p className="text-xs font-medium text-richblack-300">|</p>
                         <p className="text-xs font-medium text-richblack-300">
                           Rs. {course.price}
                         </p>

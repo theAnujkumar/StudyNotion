@@ -93,7 +93,7 @@ const VideoDetails = () => {
         currentSubSectionIndx + 1
       ]._id
       navigate(
-        `/view-course/${courseId}/section${sectionId}/sub-section${nextSubSectionId}`
+        `/view-course/${courseId}/section/${sectionId}/sub-section/${nextSubSectionId}`
       )
      }
 
@@ -102,7 +102,7 @@ const VideoDetails = () => {
       const nextSectionId = courseSectionData[currentSectionIndx + 1]._id
       const nextSubSectionId = courseSectionData[currentSectionIndx + 1].subSection[0]._id
       navigate(
-        `/view-course/${courseId}/section${nextSectionId}/sub-section${nextSubSectionId}`
+        `/view-course/${courseId}/section/${nextSectionId}/sub-section/${nextSubSectionId}`
       )
      }
   }
@@ -146,7 +146,7 @@ const VideoDetails = () => {
         currentSubSectionIndx - 1
       ]._id
       navigate(
-        `/view-course/${courseId}/section${sectionId}/sub-section${prevSubSectionId}`
+        `/view-course/${courseId}/section/${sectionId}/sub-section/${prevSubSectionId}`
       )
      }
 
@@ -158,7 +158,7 @@ const VideoDetails = () => {
       const prevSubSectionId = courseSectionData[currentSectionIndx - 1].
         subSection[prevSubSectionLength - 1]._id
       navigate(
-        `/view-course/${courseId}/section${prevSectionId}/sub-section${prevSubSectionId}`
+        `/view-course/${courseId}/section/${prevSectionId}/sub-section/${prevSubSectionId}`
       )
      }
   }

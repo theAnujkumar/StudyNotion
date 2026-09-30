@@ -1,0 +1,86 @@
+.courses-table-container {
+  overflow-x: auto;
+}
+
+.courses-table {
+  min-width: 760px;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .courses-table-container {
+    overflow: visible;
+  }
+
+  .courses-table {
+    min-width: 0;
+    border: 0;
+  }
+
+  .courses-table thead {
+    display: none;
+  }
+
+  .courses-table tbody {
+    display: block;
+  }
+
+  .courses-table tbody tr.courses-table-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #2c333f;
+    border-radius: 0.375rem;
+    background: #161d29;
+  }
+
+  .courses-table tbody tr > td {
+    min-width: 0;
+    padding: 0 !important;
+    border: 0 !important;
+    text-align: left !important;
+    white-space: normal;
+  }
+
+  .courses-table td .tdBefore {
+    display: none;
+  }
+
+  .courses-table tbody tr > .courses-table-course,
+  .courses-table tbody tr > .courses-table-actions {
+    grid-column: 1 / -1;
+  }
+
+  .courses-table tbody tr > .courses-table-course {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .courses-table-course > img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .courses-table-course > div {
+    min-width: 0;
+    gap: 0.5rem;
+  }
+
+  .courses-table tbody tr > td[data-label]::before {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #838894;
+    font-size: 0.75rem;
+    content: attr(data-label);
+  }
+
+  .courses-table tbody tr > .courses-table-actions {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #2c333f !important;
+    padding-top: 0.5rem !important;
+  }
+}

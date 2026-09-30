@@ -4,7 +4,7 @@ import { matchPath, NavLink, useLocation } from "react-router-dom";
 import * as Icons from "react-icons/vsc";
 import { resetCourseState } from "../../../slices/courseSlice";
 
-const SidebarLink = ({link,iconName}) => {
+const SidebarLink = ({link,iconName,onNavigate}) => {
     const Icon = Icons[iconName];
     const dispatch = useDispatch();
     const location = useLocation();
@@ -17,7 +17,10 @@ const SidebarLink = ({link,iconName}) => {
 
         <NavLink
             to={link.path}
-            onClick={() => dispatch(resetCourseState())}
+            onClick={() => {
+                dispatch(resetCourseState());
+                onNavigate?.();
+            }}
             className={`relative px-8 py-2 text-sm font-medium ${
                 matchRoute(link.path)
                 ? "bg-yellow-800 text-yellow-50"

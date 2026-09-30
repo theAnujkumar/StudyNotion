@@ -44,60 +44,70 @@ const UpdatePassword = () => {
                     </div>
                 ) :
                 (
-                    <div>
-                        <h1>choose new password</h1>
-                        <p>almost done. enter new password</p>
+                    <div className="mx-auto max-w-[500px] px-4 py-8 sm:px-6">
+                        <h1 className="text-2xl font-bold text-richblack-5">Choose new password</h1>
+                        <p className="mt-2 text-richblack-200">Almost done. Enter your new password.</p>
 
-                        <form onSubmit={handleOnSubmit}>
-                            <label>
+                        <form onSubmit={handleOnSubmit} className="mt-6 space-y-5">
+                            <label className="block">
                                 <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
                                 New Password <sup className="text-pink-200">*</sup>
                                 </p>
-                                <input
-                                type={showPassword ? "text" : "password"}
-                                name="password"
-                                value={password}
-                                onChange={handleOnChange}
-                                placeholder="confirm password"
-                                className="w-full p-6 bg-richblack-600 text-richblack-5"/>
-                                <span onClick={() => setShowPassword((prev) => !prev)}>
-                                    {showPassword ? (
-                                    <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
-                                    ) : (
-                                    <AiOutlineEye fontSize={24} fill="#AFB2BF" />
-                                    )}
-                                </span>
+                                <div className="relative">
+                                    <input
+                                    type={showPassword ? "text" : "password"}
+                                    name="password"
+                                    value={password}
+                                    onChange={handleOnChange}
+                                    placeholder="Enter new password"
+                                    className="w-full rounded-md border border-richblack-600 bg-richblack-600 p-4 text-richblack-5 outline-none focus:border-yellow-50"/>
+                                    <span
+                                      onClick={() => setShowPassword((prev) => !prev)}
+                                      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                                    >
+                                        {showPassword ? (
+                                        <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+                                        ) : (
+                                        <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+                                        )}
+                                    </span>
+                                </div>
                             </label>
 
-                            <label>
+                            <label className="block">
                                 <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
                                 Confirm New Password <sup className="text-pink-200">*</sup>
                                 </p>
-                                <input
-                                type={showConfirmPassword ? "text" : "password"}
-                                name="confirmPassword"
-                                value={confirmPassword}
-                                onChange={handleOnChange}
-                                placeholder="confirm password"
-                                className="w-full p-6 bg-richblack-600 text-richblack-5"/>
-                                <span onClick={() => setShowConfirmPassword((prev) => !prev)}>
-                                    {
-                                        showConfirmPassword ? (
-                                            <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
-                                            ) : (
-                                            <AiOutlineEye fontSize={24} fill="#AFB2BF" />
-                                            )
-                                    }
-                                </span>
+                                <div className="relative">
+                                    <input
+                                    type={showConfirmPassword ? "text" : "password"}
+                                    name="confirmPassword"
+                                    value={confirmPassword}
+                                    onChange={handleOnChange}
+                                    placeholder="Confirm password"
+                                    className="w-full rounded-md border border-richblack-600 bg-richblack-600 p-4 text-richblack-5 outline-none focus:border-yellow-50"/>
+                                    <span
+                                      onClick={() => setShowConfirmPassword((prev) => !prev)}
+                                      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                                    >
+                                        {
+                                            showConfirmPassword ? (
+                                                <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+                                                ) : (
+                                                <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+                                                )
+                                        }
+                                    </span>
+                                </div>
                             </label>
 
                             <button type="submit"
                                 className="mt-6 w-full rounded-[8px] bg-yellow-50 py-[12px] px-[12px] font-medium text-richblack-900"
                             >Reset Password</button>
                         </form>
-                        <div>
+                        <div className="mt-4 text-center">
                             <Link to="/login">
-                            <p>Back to login</p>
+                            <p className="text-richblack-300">Back to login</p>
                             </Link>
                         </div>
                     </div>

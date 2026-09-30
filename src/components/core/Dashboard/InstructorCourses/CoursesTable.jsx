@@ -7,6 +7,7 @@ import ConfirmationModal from "../../../common/ConfirmationModal";
 import { RiDeleteBin6Line } from "react-icons/ri"
 import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table"
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
+import "./CoursesTable.css";
 import { COURSE_STATUS } from "../../../../utils/constants";
 import { deleteCourse, fetchInstructorCourses } from "../../../../services/operations/courseDetailsAPI";
 import { formatDate } from "../../../../services/formatDate";
@@ -43,9 +44,10 @@ export default function CoursesTable({courses,setCourses})  {
 
   return(
    <>
-    <Table className="rounded-xl border border-richblack-800 ">
+    <div className="courses-table-container">
+    <Table className="courses-table rounded-xl border border-richblack-800">
       <Thead>
-       <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+      <Tr className="courses-table-heading flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
             <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
               Courses
             </Th>
@@ -73,12 +75,12 @@ export default function CoursesTable({courses,setCourses})  {
           (
             courses.map((course) => (
               <Tr key={course._id}
-                className="flex gap-x-10 border-b border-richblack-800 px-6 py-8">
-                <Td className="flex flex-1 gap-x-4">
+                className="courses-table-row flex gap-x-10 border-b border-richblack-800 px-6 py-8">
+                <Td className="courses-table-course flex flex-1 gap-x-4">
                   <img
                   src={course?.thumbnail}
                   alt={course?.courseName}
-                  className="h-[148px] w-[220px] rounded-lg object-cover"
+                  className="courses-table-thumbnail h-[148px] w-[220px] rounded-lg object-cover"
                   />
                   <div className="flex flex-col justify-between">
                     <p className="text-lg font-semibold text-richblack-5">
@@ -115,13 +117,13 @@ export default function CoursesTable({courses,setCourses})  {
                 </Td>
 
                 {/* duration , time , action */}
-                <Td className="text-sm font-medium text-richblack-100">
+                <Td data-label="Duration" className="text-sm font-medium text-richblack-100">
                   2hr 30min
                 </Td>
-                <Td className="text-sm font-medium text-richblack-100">
+                <Td data-label="Price" className="text-sm font-medium text-richblack-100">
                   ₹{course.price}
                 </Td>
-                <Td className="text-sm font-medium text-richblack-100 ">
+                <Td className="courses-table-actions text-sm font-medium text-richblack-100 ">
                   <button
                     disabled={loading}
                     onClick={() => {
@@ -155,6 +157,7 @@ export default function CoursesTable({courses,setCourses})  {
         }
       </Tbody>
     </Table>
+    </div>
     {confimationModal && <ConfirmationModal modalData={confimationModal}/>}
    </>
   )

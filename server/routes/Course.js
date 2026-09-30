@@ -8,7 +8,7 @@ const {createCategory,showAllCategories,categoryPageDetails} = require("../contr
 const {createRating,getAllRating,getAverageRating, getAllRatingReview} = require("../controllers/RatingAndReview")
 const {createSection,updateSection,deleteSection} = require("../controllers/Section");
 const {createSubSection,updateSubSection,deleteSubSection} = require("../controllers/Subsection");
-const {updateProfile,deleteProfile,updateDisplayPicture,getAllUserDetails} = require("../controllers/Profile");
+//const {updateProfile,deleteProfile,updateDisplayPicture,getAllUserDetails} = require("../controllers/Profile");
 const {updateCourseProgress} = require("../controllers/CourseProgress")
 
 // Importing Middlewares

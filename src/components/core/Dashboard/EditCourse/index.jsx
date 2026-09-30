@@ -24,8 +24,8 @@ export default function EditCourse()  {
         dispatch(setEditCourse(true))
         dispatch(setCourse(result?.courseDetails))
       }
+      setLoading(false)
     }
-    setLoading(false)
     getCourseDetails()
   },[])
 

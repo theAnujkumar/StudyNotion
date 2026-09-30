@@ -235,7 +235,7 @@ export default function CourseInformationForm() {
                         id="courseShortDesc"
                         placeholder="Enter Course Description"
                         {...register("courseShortDesc",{required:true})}
-                        className="text-black w-full"
+                        className=" w-full form-style"
                     />
                     {
                         errors.courseShortDesc && (
@@ -256,7 +256,7 @@ export default function CourseInformationForm() {
                         id="coursePrice"
                         placeholder="Enter Course Price"
                         {...register("coursePrice",{required:true})}
-                        className="w-full text-black"
+                        className="w-full form-style"
                     />
                     {
                         errors.coursePrice && (
@@ -278,7 +278,7 @@ export default function CourseInformationForm() {
                             defaultValue=""
                             placeholder="Enter Course Category"
                             {...register("courseCategory",{required:true})}
-                            className="w-full text-black">
+                            className="w-full form-style">
 
                             <option value="" disabled>
                                 choose category
@@ -330,7 +330,7 @@ export default function CourseInformationForm() {
                         id="courseBenefits"
                         placeholder="Enter Benefits of Course"
                             {...register("courseBenefits",{required:true})}
-                            className="w-full text-black"
+                            className="w-full form-style"
                     />
                     {
                         errors.courseBenefits && (

@@ -23,6 +23,16 @@ import { BsChevronDown } from "react-icons/bs"
 // ];
 // console.log(subLinks)
 
+const createCategorySlug = (name = "") => {
+    return String(name)
+        .trim()
+        .toLowerCase()
+        .replace(/&/g, "")
+        .replace(/[^a-z0-9\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-");
+};
+
 const Navbar = () => {
 
     const {token} = useSelector( (state) => state.auth );
@@ -104,11 +114,7 @@ const Navbar = () => {
                                     subLinks.map((subLink, index) => (
                                     <Link
                                         key={index}
-                                        to={`/catalog/${subLink.name
-                                        .replace(/\//g, "-")
-                                        .split(" ")
-                                        .join("-")
-                                        .toLowerCase()}`}
+                                        to={`/catalog/${createCategorySlug(subLink.name)}`}
                                     >
                                         <p>{subLink.name}</p>
                                     </Link>

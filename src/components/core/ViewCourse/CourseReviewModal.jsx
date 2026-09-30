@@ -42,7 +42,7 @@ export default function CourseReviewModal({ setReviewModal })
   }
 
   return(
-    <div lassName="fixed inset-0 z-[1000] !mt-0 grid h-screen w-screen place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[1000] !mt-0 grid h-screen w-screen place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm">
       <div className="my-10 w-11/12 max-w-[700px] rounded-lg border border-richblack-400 bg-richblack-800">
         {/* header part */}
         <div className="flex items-center justify-between rounded-t-lg bg-richblack-700 p-5">
@@ -102,6 +102,7 @@ export default function CourseReviewModal({ setReviewModal })
             {/* buttons */}
             <div className="mt-6 flex w-11/12 justify-end gap-x-2">
               <button
+                type="button"
                 onClick={() => setReviewModal(false)}
                 className={`flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900`}
               >

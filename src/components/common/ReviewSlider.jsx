@@ -36,25 +36,39 @@ const ReviewSlider = () => {
   },[])
 
 
+  const visibleReviews = Math.max(reviews.length, 1);
+  const compactReviews = reviews.length < 3;
+
   return(
     <div className="text-white">
-      <div className="h-[180px] my-[50px] max-w-maxContentTab lg:max-w-maxContent">
+      {/* <div className="h-[180px] my-[50px] max-w-maxContentTab lg:max-w-maxContent"> */}
+      <div className="my-[50px] min-h-[180px] w-full max-w-maxContentTab lg:max-w-maxContent">
         <Swiper
-          slidesPerView={3}
+          slidesPerView={1}
           spaceBetween={25}
-          loop={true}
+          loop={reviews.length > 3}
+          centerInsufficientSlides={true}
           freeMode={true}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
           }}
+          breakpoints={{
+            // 700
+              640: {
+                slidesPerView: Math.min(visibleReviews, 2),
+              },
+              1024: {
+                slidesPerView: Math.min(visibleReviews, 3),
+              }
+            }}
           modules={[FreeMode, Pagination, Autoplay]}
           className="w-full ">
 
             {reviews.map((review,i) => {
               return(
                 <SwiperSlide key={i}>
-                  <div className="flex flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25">
+                  <div className={`mx-auto flex w-full ${compactReviews ? "max-w-[24rem]" : "max-w-none"} flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25`}>
                     <div className="flex items-center gap-4">
                       <img
                         src={

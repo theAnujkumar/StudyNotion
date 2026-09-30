@@ -88,36 +88,47 @@ export default function PublishCourse()
 
 
   return(
-    <div className="rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6">
-      <p className="text-2xl font-semibold text-richblack-5">
-        Publish Settings
-      </p>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div className="rounded-md border border-richblack-700 bg-richblack-800 p-4 sm:p-6">
+      <div className="mb-6 flex flex-col gap-2">
+        <p className="text-2xl font-semibold text-richblack-5">
+          Publish Settings
+        </p>
+        <p className="text-sm text-richblack-300">
+          Decide if this course should be visible to students.
+        </p>
+      </div>
+
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {/* check box */}
-        <div>
-          <label htmlFor="public">
+        <div className="rounded-xl border border-richblack-700 bg-richblack-900/50 p-4 sm:p-5">
+          <label htmlFor="public" className="flex cursor-pointer items-start gap-3">
             <input
               id="public"
               type="checkbox"
               {...register("public")}
+              className="mt-1 h-4 w-4 accent-yellow-50"
             />
-            <span className="ml-2 text-richblack-400">
+            <span className="text-sm text-richblack-200 sm:text-base">
               Make this course as public
             </span>
           </label>
         </div>
 
-        {/* next prev button */}
-        <div className="flex justify-end gap-x-3">
+        {/* buttons of next/prev */}
+        <div className="flex flex-col-reverse justify-end gap-3 sm:flex-row">
           <button
             type="button"
             onClick={goBack}
             disabled={loading}
-            className="flex items-center rounded-md bg-richblack-300 p-6">
+            className="flex items-center justify-center rounded-md bg-richblack-300 px-[20px] py-[8px] font-semibold text-richblack-900 transition hover:bg-richblack-200 disabled:cursor-not-allowed disabled:opacity-70"
+          >
             Back
           </button>
-          <IconBtn text="Save Changes"
+          <IconBtn
+            text="Save Changes"
             disabled={loading}
+            customClasses="justify-center"
+            type="submit"
           />
         </div>
       </form>
