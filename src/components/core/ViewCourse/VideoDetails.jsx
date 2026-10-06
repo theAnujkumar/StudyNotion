@@ -12,13 +12,13 @@ const VideoDetails = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const dispatch = useDispatch()
-  const {user} = useSelector((state) => state.profile)
+  //const {user} = useSelector((state) => state.profile)
   const { token } = useSelector((state) => state.auth)
   const playerRef = useRef(null)
   const {
      courseSectionData,
      courseEntireData,
-     totalNoOfLectures,
+    //  totalNoOfLectures,
      completedLectures,
      updateCompletedLectures,
    } = useSelector((state) => state.viewCourse)
@@ -59,8 +59,7 @@ const VideoDetails = () => {
     const currentSectionIndx = courseSectionData.findIndex(
       (data) => data._id === sectionId
     )
-    const currentSubSectionIndx = courseSectionData?.[currentSectionIndx]?.
-      subSection?.findIndex(
+    const currentSubSectionIndx = courseSectionData?.[currentSectionIndx]?.subSection?.findIndex(
       (data) => data._id === subSectionId
     )
 
@@ -81,8 +80,7 @@ const VideoDetails = () => {
 
     const noOfSubsections = courseSectionData?.[currentSectionIndx]?.subSection.length
 
-    const currentSubSectionIndx = courseSectionData?.[currentSectionIndx]?.
-      subSection?.findIndex((data) => data._id === subSectionId)
+    const currentSubSectionIndx = courseSectionData?.[currentSectionIndx]?.subSection?.findIndex((data) => data._id === subSectionId)
 
      console.log("no of subsections", noOfSubsections)
 
@@ -115,8 +113,7 @@ const VideoDetails = () => {
 
     const noOfSubsections = courseSectionData?.[currentSectionIndx]?.subSection.length
 
-    const currentSubSectionIndx = courseSectionData?.[currentSectionIndx]?.
-      subSection?.findIndex((data) => data._id === subSectionId)
+    const currentSubSectionIndx = courseSectionData?.[currentSectionIndx]?.subSection?.findIndex((data) => data._id === subSectionId)
 
      console.log("no of subsections", noOfSubsections)
 
@@ -136,8 +133,7 @@ const VideoDetails = () => {
       (data) => data._id === sectionId
     )
 
-    const currentSubSectionIndx = courseSectionData?.[currentSectionIndx]?.
-      subSection?.findIndex((data) => data._id === subSectionId)
+    const currentSubSectionIndx = courseSectionData?.[currentSectionIndx]?.subSection?.findIndex((data) => data._id === subSectionId)
 
      // for subsection in same section
      if(currentSubSectionIndx !== 0)
@@ -155,8 +151,7 @@ const VideoDetails = () => {
       const prevSectionId = courseSectionData[currentSectionIndx - 1]._id
       const prevSubSectionLength = courseSectionData?.
         [currentSectionIndx-1]?.subSection.length
-      const prevSubSectionId = courseSectionData[currentSectionIndx - 1].
-        subSection[prevSubSectionLength - 1]._id
+      const prevSubSectionId = courseSectionData[currentSectionIndx - 1].subSection[prevSubSectionLength - 1]._id
       navigate(
         `/view-course/${courseId}/section/${prevSectionId}/sub-section/${prevSubSectionId}`
       )

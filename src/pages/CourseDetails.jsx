@@ -12,6 +12,7 @@ import Markdown from 'react-markdown'
 import { BiInfoCircle } from "react-icons/bi"
 import { HiOutlineGlobeAlt } from "react-icons/hi"
 import CourseDetailsCard from "../components/core/Course/CourseDetailsCard";
+import CourseAccordingBar from "../components/core/Course/CourseAccordingBar";
 
 const CourseDetails = () => {
 
@@ -74,9 +75,8 @@ const CourseDetails = () => {
       ? isActive.concat([id])
       : isActive.filter((e) => e !== id)
     )
-    handleActive()
   }
-  //console.log("is active or not " , isActive)
+  console.log("is active or not " , isActive)
 
   if(loading || !courseData)
   return (
@@ -209,7 +209,7 @@ const CourseDetails = () => {
           </div>
 
           {/* course content part */}
-          <div>
+          <div className="max-w-[830px]">
             <div className="flex flex-col gap-3">
               <p className="text-[28px] font-semibold">Course Content</p>
               <div className="flex flex-wrap justify-between gap-2">
@@ -220,7 +220,7 @@ const CourseDetails = () => {
                   <span>
                     {totalNoOfLectures} {`lecture(s)`}
                   </span>
-                  <span>{courseData.data?.totalDuration} total length</span>
+                  <span>{courseData.data?.totalDuration} sec total length</span>
                 </div>
                 <div>
                   <button
@@ -236,11 +236,19 @@ const CourseDetails = () => {
             {/* user me se photo , profile me se about */}
             {/*  rotate 180 , specific height , transition on height , or use useref hook */}
             {/* Course Details Accordionly  */} {/* drop down part */}
-            <div>
+            <div className="py-4">
+              {courseContent?.map((course,index) => (
+                <CourseAccordingBar
+                  course = {course}
+                  key = {index}
+                  isActive = {isActive}
+                  handleActive = {handleActive}
+                />
+              ))}
             </div>
 
             {/* Author Details */}
-            <div>
+            <div className="mb-12 py-4">
               <p className="text-[28px] font-semibold">Author</p>
               <div className="flex items-center gap-4 py-4">
                 <img

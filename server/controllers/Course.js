@@ -16,8 +16,8 @@ exports.createCourse = async(req,res) => {
         const userId = req.user.id;
 
         // fetch data
-        let {courseName , courseDescription ,whatYouWillLearn , price , category , //tag ,
-            status , instructions} = req.body;
+        let {courseName , courseDescription ,whatYouWillLearn , price , category ,
+           tag: _tag , status , instructions: _instructions} = req.body;
 
             // console.log("req body",req.body);
             // console.log("req user id",req.user.id);
@@ -30,11 +30,17 @@ exports.createCourse = async(req,res) => {
 
         // get thumbnail
         const thumbnail = req.files.thumbnailImage;
+
+        // Convert the tag and instructions from stringified Array to Array
+        const tag = JSON.parse(_tag)
+        const instructions = JSON.parse(_instructions)
+
+        console.log("tag", tag)
+        console.log("instructions", instructions)
         
         // validation
         if(!courseName || !courseDescription || !whatYouWillLearn || !price || !category 
-             || !thumbnail 
-            // || !tag
+             || !thumbnail || !tag.length || !instructions.length
         ){
             return res.status(400).json({
                 success:false,
@@ -94,11 +100,11 @@ exports.createCourse = async(req,res) => {
             instructor : instructorDetails._id,
             whatYouWillLearn : whatYouWillLearn,
             price,
-            // tag : tag,
+            tag,
             category : categoryDetails._id,
             thumbnail : thumbnailImage.secure_url,
             status : status,
-            instructions : instructions,
+            instructions,
         })
 
         // add new course to user schema of instructor

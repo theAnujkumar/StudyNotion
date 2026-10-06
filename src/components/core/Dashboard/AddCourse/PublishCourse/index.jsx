@@ -30,9 +30,13 @@ export default function PublishCourse()
         }
     },[])
 
+    const goBack = () => {
+      dispatch(setStep(2))
+    }
+
     const goToCourses = () => {
       dispatch(resetCourseState())
-      navigate("dashboard/my-courses");
+      navigate("/dashboard/my-courses");
     }
 
     const handleCoursePublish = async() =>  {
@@ -75,10 +79,6 @@ export default function PublishCourse()
       }
       setLoading(false);
 
-    }
-
-    const goBack = () => {
-      dispatch(setStep(2));
     }
 
     const onSubmit = (data) => {

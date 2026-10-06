@@ -11,6 +11,7 @@ import Upload from "../Upload";
 
 import { setCourse, setStep } from "../../../../../slices/courseSlice"
 import { COURSE_STATUS } from "../../../../../utils/constants";
+import ChipInput from "./ChipInput";
 
 export default function CourseInformationForm() {
 
@@ -58,7 +59,7 @@ export default function CourseInformationForm() {
             setValue("courseTitle", course.courseName);
             setValue("courseShortDesc", course.courseDescription)
             setValue("coursePrice", course.price)
-            setValue("courseTags", course.tag)
+            setValue("courseTags", course.tag ?? [])
             setValue("courseBenefits", course.whatYouWillLearn)
             setValue("courseCategory", course.category)
             setValue("courseRequirements", course.instructions)
@@ -89,12 +90,13 @@ export default function CourseInformationForm() {
 
     const isFormUpdated = () => {
         const currentValues = getValues()
+        const currentTags = currentValues.courseTags ?? course.tag ?? []
         console.log("changes after editing form values:",currentValues);
 
         if(currentValues.courseTitle !== course.courseName ||
             currentValues.courseShortDesc !== course.courseDescription ||
             currentValues.coursePrice !== course.price ||
-            currentValues.courseTags.toString() !== course.tag.toString() ||
+            currentTags.toString() !== (course.tag ?? []).toString() ||
             currentValues.courseBenefits !== course.whatYouWillLearn ||
             currentValues.courseCategory._id !== course.category._id ||
             currentValues.courseRequirements.toString() !==
@@ -117,6 +119,7 @@ export default function CourseInformationForm() {
             {
                 // frontend part ki hai currentValues
                 const currentValues = getValues();
+                const currentTags = currentValues.courseTags ?? course.tag ?? []
                 const formData = new FormData()
 
                 formData.append("courseId" , course._id);
@@ -132,8 +135,8 @@ export default function CourseInformationForm() {
                 {
                     formData.append("coursePrice" , data.coursePrice);
                 }
-                if (currentValues.courseTags.toString() !== course.tag.toString()) {
-                formData.append("tag", JSON.stringify(data.courseTags))
+                if (currentTags.toString() !== (course.tag ?? []).toString()) {
+                formData.append("tag", JSON.stringify(data.courseTags ?? []))
                 }
                 if (currentValues.courseBenefits !== course.whatYouWillLearn) {
                 formData.append("whatYouWillLearn", data.courseBenefits)
@@ -179,7 +182,7 @@ export default function CourseInformationForm() {
         formData.append("courseName",data.courseTitle);
         formData.append("courseDescription",data.courseShortDesc);
         formData.append("price",data.coursePrice);
-        formData.append("tag", JSON.stringify(data.courseTags))
+        formData.append("tag", JSON.stringify(data.courseTags ?? []))
         formData.append("whatYouWillLearn", data.courseBenefits)
         formData.append("category", data.courseCategory)
         formData.append("status", COURSE_STATUS.DRAFT)
@@ -301,7 +304,7 @@ export default function CourseInformationForm() {
                 </div>
                 
                 {/* create custom component for handling tag component */}
-                {/* <ChipInput
+                <ChipInput
                     label = "Tags"
                     name = "courseTags"
                     placeholder = "Enter courseTag"
@@ -309,7 +312,7 @@ export default function CourseInformationForm() {
                     errors={errors}
                     setValue={setValue}
                     getValues={getValues}
-                /> */}
+                />
                 
                  {/* create custom component for showing and uploading preview of media */}
                  <Upload
@@ -352,7 +355,7 @@ export default function CourseInformationForm() {
                 />
 
                     {/* next button */}
-                <div>
+                <div className="flex justify-between gap-x-2">
                     {
                         editCourse && (
                             <button
@@ -360,7 +363,7 @@ export default function CourseInformationForm() {
                                 disabled = {loading} 
                                 className={`flex cursor-pointer items-center gap-x-2 rounded-md
                                  bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900`}>
-                                continue without saving
+                                Continue Without Saving
                             </button>
                         )
                     }
