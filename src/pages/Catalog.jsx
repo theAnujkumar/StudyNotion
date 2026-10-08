@@ -205,7 +205,7 @@ function Catalog () {
         {/* Section 2 */}
         <div className="mx-auto w-full max-w-maxContentTab px-4 py-8 sm:px-6 sm:py-10 lg:max-w-maxContent lg:py-12">
           <div className="section_heading">
-            Top courses in {catalogPageData?.data?.selectedCategory?.name}
+            Top courses in {catalogPageData?.data?.differentCategory?.name}
           </div>
           <div className="pt-4">
             <CourseSlider 
